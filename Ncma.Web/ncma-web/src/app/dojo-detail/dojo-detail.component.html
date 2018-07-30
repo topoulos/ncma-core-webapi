@@ -1,0 +1,17 @@
+<div class="container" *ngIf="dojo">
+
+    <h2>{{dojo.name | uppercase}} Details</h2>
+    <div>
+        <span>id: </span>{{dojo.id}}</div>
+    <div>
+        <label>Name:
+            <input [(ngModel)]="dojo.name" placeholder="name" />
+        </label>
+    </div>
+    <div>
+        <label>Style:
+            <input [(ngModel)]="dojo.style" placeholder="style" />
+        </label>
+    </div>
+    <button class="btn btn-info" (click)="saveDojo()">Save</button>
+</div>

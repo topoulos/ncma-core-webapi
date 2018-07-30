@@ -1,0 +1,17 @@
+  <div class="container">
+    <h2>Dojos</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Style</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dojo of dojos">
+          <td><a routerLink="/dojos/{{dojo.id}}">{{dojo.name}}</a></td>
+          <td>{{dojo.style}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

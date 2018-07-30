@@ -16,10 +16,16 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { DojoListComponent } from './dojo-list/dojo-list.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { DojoDetailComponent } from './dojo-detail/dojo-detail.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DojoListComponent,
+    DojoDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +42,9 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     TabsModule.forRoot(),
     TimepickerModule.forRoot(),
     TooltipModule.forRoot(),
-    TypeaheadModule.forRoot()
+    TypeaheadModule.forRoot(),
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
