@@ -20,7 +20,7 @@ import { DojoListComponent } from './dojo-list/dojo-list.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { DojoDetailComponent } from './dojo-detail/dojo-detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { MomentModule } from 'ngx-moment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +44,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TooltipModule.forRoot(),
     TypeaheadModule.forRoot(),
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    MomentModule
   ],
   providers: [],
   bootstrap: [AppComponent]
