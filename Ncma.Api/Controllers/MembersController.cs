@@ -1,8 +1,4 @@
-﻿
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
-namespace Ncma.Api.Controllers
+﻿namespace Ncma.Api.Controllers
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -41,7 +37,7 @@ namespace Ncma.Api.Controllers
         public async Task<IActionResult> Get()
         {
             List<MemberServiceModel> serviceModels = await memberService.GetAllMembers();
-            List<MemberDto> dtos = serviceModels.Select(x => new MemberDto(x)).ToList();
+            List<MemberListDto> dtos = serviceModels.Select(x => new MemberListDto(x)).ToList();
             return Ok(dtos);
         }
 

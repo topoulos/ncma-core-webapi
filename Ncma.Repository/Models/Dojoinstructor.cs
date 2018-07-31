@@ -10,7 +10,6 @@
         public int? InstructorId { get; set; }
 
         [ForeignKey("InstructorId")]
-
         public Member Instructor { get; set; }
 
         public int? InstructorTypeId { get; set; }

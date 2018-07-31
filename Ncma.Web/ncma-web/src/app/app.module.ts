@@ -20,12 +20,20 @@ import { DojoListComponent } from './dojo-list/dojo-list.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { DojoDetailComponent } from './dojo-detail/dojo-detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MomentModule } from 'ngx-moment';
+// import { MomentModule } from 'ngx-moment';
+import { MemberListComponent } from './member-list/member-list.component';
+import { MemberDetailComponent } from './member-detail/member-detail.component';
+import { CertificateListComponent } from './certificate-list/certificate-list.component';
+import { CertificateDetailComponent } from './certificate-detail/certificate-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
     DojoListComponent,
-    DojoDetailComponent
+    DojoDetailComponent,
+    MemberListComponent,
+    MemberDetailComponent,
+    CertificateListComponent,
+    CertificateDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +53,7 @@ import { MomentModule } from 'ngx-moment';
     TypeaheadModule.forRoot(),
     AppRoutingModule,
     FormsModule,
-    MomentModule
+    // MomentModule
   ],
   providers: [],
   bootstrap: [AppComponent]

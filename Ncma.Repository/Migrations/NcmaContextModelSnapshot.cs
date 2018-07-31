@@ -611,7 +611,7 @@ namespace Ncma.Repository.Migrations
             modelBuilder.Entity("Ncma.Repository.Models.DojoInstructor", b =>
                 {
                     b.HasOne("Ncma.Repository.Models.Dojo", "Dojo")
-                        .WithMany()
+                        .WithMany("DojoInstructors")
                         .HasForeignKey("DojoId")
                         .OnDelete(DeleteBehavior.Cascade);
 

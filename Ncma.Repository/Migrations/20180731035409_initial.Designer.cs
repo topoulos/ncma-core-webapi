@@ -10,7 +10,7 @@ using Ncma.Repository.Models;
 namespace Ncma.Repository.Migrations
 {
     [DbContext(typeof(NcmaContext))]
-    [Migration("20180728232705_initial")]
+    [Migration("20180731035409_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -613,7 +613,7 @@ namespace Ncma.Repository.Migrations
             modelBuilder.Entity("Ncma.Repository.Models.DojoInstructor", b =>
                 {
                     b.HasOne("Ncma.Repository.Models.Dojo", "Dojo")
-                        .WithMany()
+                        .WithMany("DojoInstructors")
                         .HasForeignKey("DojoId")
                         .OnDelete(DeleteBehavior.Cascade);
 

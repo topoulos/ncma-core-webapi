@@ -1,0 +1,17 @@
+<div class="container">
+    <h2>Members</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Dojo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let member of members">
+          <td><a routerLink="/members/{{member.id}}">{{member.firstName + ' ' + member.lastName}}</a></td>
+          <td>{{member.dojoId}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

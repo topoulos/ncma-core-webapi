@@ -35,6 +35,7 @@
                                 x.Dojo.DojoInstructors.Any(y => y.Instructor.FirstName.Contains(searchTerm)) ||
                                 x.Dojo.DojoInstructors.Any(y => y.Instructor.FirstName.Contains(searchTerm)) ||
                                 x.RankText.Contains(searchTerm) ||
+                                x.Id.ToString().Contains(searchTerm) ||
                                 x.Country.Name.Contains(searchTerm) ||
                                 x.City.Contains(searchTerm))
                     .ToListAsync();

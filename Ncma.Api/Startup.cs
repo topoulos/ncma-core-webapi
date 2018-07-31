@@ -31,7 +31,7 @@ namespace Ncma.Api
         {
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddDbContext<NcmaContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("LiveConnection")));
 
             services.AddMvc();
 

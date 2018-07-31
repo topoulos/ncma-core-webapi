@@ -215,11 +215,11 @@ namespace Ncma.Repository.Migrations
                 name: "DojoInstructors",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DojoId = table.Column<int>(nullable: false),
                     InstructorId = table.Column<int>(nullable: true),
                     InstructorTypeId = table.Column<int>(nullable: true),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     IsActive = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
