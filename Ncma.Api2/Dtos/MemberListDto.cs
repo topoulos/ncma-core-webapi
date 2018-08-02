@@ -24,6 +24,7 @@ namespace Ncma.Api2.Dtos
         public MemberListDto(MemberServiceModel memberServiceModel)
         {
             this.InjectFrom(memberServiceModel);
+            FullName = memberServiceModel.FirstName + " " + memberServiceModel.LastName;
         }
     }
 }

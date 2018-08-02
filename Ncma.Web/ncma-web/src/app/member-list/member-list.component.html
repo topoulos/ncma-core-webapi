@@ -9,8 +9,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let member of members">
-          <td><a routerLink="/members/{{member.id}}">{{member.firstName + ' ' + member.lastName}}</a></td>
-          <td>{{member.dojoId}}</td>
+          <td><a routerLink="/members/{{member.id}}">{{member.fullName}}</a></td>
+          <td>{{member.dojoName}}</td>
         </tr>
       </tbody>
     </table>

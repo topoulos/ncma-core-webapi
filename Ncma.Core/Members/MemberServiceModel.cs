@@ -44,11 +44,12 @@
         public MemberServiceModel(Member member)
         {
             this.InjectFrom(member);
-            DojoName = member.Dojo.Name;
-            Style = member.Dojo.Style;
-            MemberTypeName = member.MemberType.Name;
-            StateAbbrev = member.State.StateAbbrev;
-            CountryName = member.Country.Name;
+
+            DojoName = member.Dojo?.Name;
+            Style = member.Dojo?.Style;
+            MemberTypeName = member.MemberType?.Name;
+            StateAbbrev = member.State?.StateAbbrev;
+            CountryName = member.Country?.Name;
         }
     }
 }

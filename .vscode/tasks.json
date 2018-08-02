@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Ncma.Api/Ncma.Api.csproj"
+                "${workspaceFolder}/Ncma.Api2/Ncma.Api2.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

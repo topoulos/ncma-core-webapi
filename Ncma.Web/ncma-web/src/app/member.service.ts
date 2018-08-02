@@ -4,6 +4,7 @@ import { Member } from './member';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Config } from './constants/config';
+import { MemberListItem } from './memberListItem';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ import { Config } from './constants/config';
 export class MemberService {
     private membersUrl = `${Config.baseUrl}/api/members`;  // URL to web api
 
-    public getMembers(): Observable<Member[]> {
-        return this.http.get<Member[]>(this.membersUrl);
+    public getMembers(): Observable<MemberListItem[]> {
+        return this.http.get<MemberListItem[]>(this.membersUrl);
     }
 
     public getMember(id: number): Observable<Member> {
