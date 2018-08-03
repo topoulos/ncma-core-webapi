@@ -10,36 +10,33 @@
     {
         public async Task<List<Member>> GetActiveMembersAsync()
         {
-            using (var context = new NcmaContext())
-            {
-                return await context.Members.Where(x => x.IsActive).ToListAsync();
-            }
+            return await _context.Members.Where(x => x.IsActive).ToListAsync();
         }
+
         public async Task<List<Member>> GetInactiveMembersAsync()
         {
-            using (var context = new NcmaContext())
-            {
-                return await context.Members.Where(x => !x.IsActive).ToListAsync();
-            }
+            return await _context.Members.Where(x => !x.IsActive).ToListAsync();
+        }
+
+        public async Task<List<Member>> GetMemberListAsync()
+        {
+            return await _context.Members.Include(x => x.Dojo).ToListAsync();
         }
 
         public async Task<List<Member>> SearchAsync(string searchTerm)
         {
-            using (var context = new NcmaContext())
-            {
-                return await context.Members
-                    .Where(x => x.FirstName.Contains(searchTerm) ||
-                                x.LastName.Contains(searchTerm) ||
-                                x.Dojo.Name.Contains(searchTerm) ||
-                                x.State.StateAbbrev.Contains(searchTerm) ||
-                                x.Dojo.DojoInstructors.Any(y => y.Instructor.FirstName.Contains(searchTerm)) ||
-                                x.Dojo.DojoInstructors.Any(y => y.Instructor.FirstName.Contains(searchTerm)) ||
-                                x.RankText.Contains(searchTerm) ||
-                                x.Id.ToString().Contains(searchTerm) ||
-                                x.Country.Name.Contains(searchTerm) ||
-                                x.City.Contains(searchTerm))
-                    .ToListAsync();
-            }
+            return await _context.Members
+                .Where(x => x.FirstName.Contains(searchTerm) ||
+                            x.LastName.Contains(searchTerm) ||
+                            x.Dojo.Name.Contains(searchTerm) ||
+                            x.State.StateAbbrev.Contains(searchTerm) ||
+                            x.Dojo.DojoInstructors.Any(y => y.Instructor.FirstName.Contains(searchTerm)) ||
+                            x.Dojo.DojoInstructors.Any(y => y.Instructor.FirstName.Contains(searchTerm)) ||
+                            x.RankText.Contains(searchTerm) ||
+                            x.Id.ToString().Contains(searchTerm) ||
+                            x.Country.Name.Contains(searchTerm) ||
+                            x.City.Contains(searchTerm))
+                .ToListAsync();
         }
 
         public MemberRepository(NcmaContext context) : base(context)

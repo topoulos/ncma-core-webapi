@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
+import { BusyModule, BusyConfig } from 'angular2-busy';
 import { AppComponent } from './app.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
@@ -26,6 +27,7 @@ import { MemberListComponent } from './member-list/member-list.component';
 import { MemberDetailComponent } from './member-detail/member-detail.component';
 import { CertificateListComponent } from './certificate-list/certificate-list.component';
 import { CertificateDetailComponent } from './certificate-detail/certificate-detail.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +56,18 @@ import { CertificateDetailComponent } from './certificate-detail/certificate-det
     TypeaheadModule.forRoot(),
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BusyModule.forRoot(
+        new BusyConfig({
+            message: 'Don\'t panic!',
+            backdrop: true,
+            template: '<div class="loading-indicator-background full-screen"><div class="loading-indicator"></div></div>',
+            delay: 200,
+            minDuration: 10000,
+            wrapperClass: 'container'
+        })
+    ),
+    BrowserAnimationsModule
     // MomentModule
   ],
   providers: [],

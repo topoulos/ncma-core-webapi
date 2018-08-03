@@ -11,7 +11,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Ncma.Api2/bin/Debug/netcoreapp2.0/Ncma.Api2.dll",
+            "program": "${workspaceFolder}/Ncma.Api2/bin/Debug/netcoreapp2.0/win8-x64/Ncma.Api2.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Ncma.Api2",
             "stopAtEntry": false,

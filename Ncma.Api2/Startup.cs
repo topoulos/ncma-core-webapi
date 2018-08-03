@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Ncma.Api2 {
+    using System.IdentityModel.Tokens.Jwt;
     using System.Text;
     using Core.Members;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -34,6 +35,29 @@ namespace Ncma.Api2 {
             services.AddDbContext<NcmaContext> (options =>
                 options.UseSqlServer (Configuration.GetConnectionString ("LiveConnection")));
 
+            services.AddIdentity<ApplicationUser, IdentityRole> ()
+                .AddEntityFrameworkStores<NcmaContext> ()
+                .AddDefaultTokenProviders ();
+
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear (); // => remove default claims
+
+            services
+                .AddAuthentication (options => {
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer (cfg => {
+                    cfg.RequireHttpsMetadata = false;
+                    cfg.SaveToken = true;
+                    cfg.TokenValidationParameters = new TokenValidationParameters {
+                        ValidIssuer = Configuration["JwtIssuer"],
+                        ValidAudience = Configuration["JwtIssuer"],
+                        IssuerSigningKey = new SymmetricSecurityKey (Encoding.UTF8.GetBytes (Configuration["JwtKey"])),
+                        ClockSkew = TimeSpan.Zero // remove delay of token when expire
+                    };
+                });
+
             services.AddMvc ();
 
             //DI
@@ -42,7 +66,7 @@ namespace Ncma.Api2 {
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure (IApplicationBuilder app, IHostingEnvironment env) {
+        public void Configure (IApplicationBuilder app, IHostingEnvironment env, NcmaContext dbContext) {
             if (env.IsDevelopment ()) {
                 app.UseDeveloperExceptionPage ();
             }
@@ -52,7 +76,11 @@ namespace Ncma.Api2 {
                 .AllowAnyHeader ()
                 .AllowAnyMethod ());
 
+            app.UseAuthentication();
+
             app.UseMvc ();
+
+            dbContext.Database.EnsureCreated ();
 
             app.Run (async (context) => {
                 await context.Response.WriteAsync ("MVC did not find anything");

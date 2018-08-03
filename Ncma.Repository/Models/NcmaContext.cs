@@ -1,9 +1,10 @@
 ﻿namespace Ncma.Repository.Models
 {
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
     using SeedData;
 
-    public class NcmaContext : DbContext
+    public class NcmaContext : IdentityDbContext<ApplicationUser>
     {
         public virtual DbSet<Certificate> Certificates { get; set; }
         public virtual DbSet<CertificateType> CertificateTypes { get; set; }
@@ -13,6 +14,7 @@
         public virtual DbSet<InstructorType> InstructorTypes { get; set; }
         public virtual DbSet<Member> Members { get; set; }
         public virtual DbSet<State> States { get; set; }
+        public virtual DbSet<ApplicationUser> ApplicationUsers {get; set;}
 
         public NcmaContext()
         {
@@ -28,12 +30,14 @@
             if (!optionsBuilder.IsConfigured)
             {
                 //optionsBuilder.UseSqlServer("Server=s05.winhost.com;Database=DB_4170_ncma;user id=DB_4170_ncma_user;password=t3l1k0;");
-                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=NCMA;Trusted_Connection=True;MultipleActiveResultSets=true");
+                optionsBuilder.UseSqlServer("Server=s14.winhost.com;Database=DB_4170_ncmav2;user id=DB_4170_ncmav2_user;password=t3l1k0;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<CertificateType>(entity =>
             {
                 entity.Property(e => e.Description)
@@ -163,6 +167,7 @@
             modelBuilder.Entity<CertificateType>().HasData(CertificateTypeSeedData.SeedData);
             modelBuilder.Entity<Country>().HasData(CountrySeedData.SeedData);
             modelBuilder.Entity<InstructorType>().HasData(InstructorTypeSeedData.SeedData);
+
         }
     }
 }

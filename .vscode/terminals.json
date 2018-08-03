@@ -1,0 +1,22 @@
+{
+    "autorun": false,
+    "terminals": [{
+            "name": "Run NCMA Website",
+            "focus": true,
+            "execute": true,
+            "commands": [
+                "cd Ncma.Web",
+                "ng serve -o"
+            ]
+        },
+        {
+            "name": "Run Web API",
+            "focus": true,
+            "execute": true,
+            "commands": [
+                "cd Ncma.Api2",
+                "dotnet run"
+            ]
+        }
+    ]
+}

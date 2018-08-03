@@ -42,10 +42,7 @@
 
         public async Task<T> GetAsync(int id)
         {
-            using (var context = new NcmaContext())
-            {
-                return await context.Set<T>().FindAsync(id);
-            }
+            return await _context.Set<T>().FindAsync(id);
         }
 
         public IEnumerable<T> Include(params Expression<Func<T, object>>[] includes)

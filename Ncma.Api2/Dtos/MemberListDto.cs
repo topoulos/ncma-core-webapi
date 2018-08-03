@@ -25,6 +25,7 @@ namespace Ncma.Api2.Dtos
         {
             this.InjectFrom(memberServiceModel);
             FullName = memberServiceModel.FirstName + " " + memberServiceModel.LastName;
+            DojoName = memberServiceModel.DojoName;
         }
     }
 }

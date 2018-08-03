@@ -9,5 +9,6 @@
         Task<List<Member>> GetActiveMembersAsync();
         Task<List<Member>> GetInactiveMembersAsync();
         Task<List<Member>> SearchAsync(string searchTerm);
+        Task<List<Member>> GetMemberListAsync();
     }
 }
